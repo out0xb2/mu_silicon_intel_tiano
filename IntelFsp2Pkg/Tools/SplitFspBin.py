@@ -789,7 +789,7 @@ def RebaseFspBin (FspBinary, FspComponent, FspBase, OutputDir, OutputFile):
                 break
 
         if not found:
-            print ("ERROR: Could not find FSP_%c component to rebase !" % fspcomp.upper())
+            print ("ERROR: Could not find FSP_%c component to rebase !" % fspcomp.upper() )
             return
 
         fspbase = baselist[idx]
@@ -799,7 +799,7 @@ def RebaseFspBin (FspBinary, FspComponent, FspBase, OutputDir, OutputFile):
             newbase = int(fspbase)
         oldbase = fsp.Fih.ImageBase
         delta = newbase - oldbase
-        print ("Rebase FSP-%c from 0x%08X to 0x%08X:" % (ftype.upper(),oldbase,newbase))
+        print ("Rebase FSP-%c from 0x%08X to 0x%08X:" % (ftype.upper(),oldbase,newbase) )
 
         imglist = []
         for fvidx in fsp.FvIdxList:
@@ -818,12 +818,12 @@ def RebaseFspBin (FspBinary, FspComponent, FspBase, OutputDir, OutputFile):
             pcount += img.Rebase(delta, newfspbin)
             fcount += 1
 
-        print ("  Patched %d entries in %d TE/PE32 images." % (pcount, fcount))
+        print ("  Patched %d entries in %d TE/PE32 images." % (pcount, fcount) )
 
         (count, applied) = fsp.Patch(delta, newfspbin)
-        print ("  Patched %d entries using FSP patch table." % applied)
+        print ("  Patched %d entries using FSP patch table." % applied )
         if count != applied:
-            print ("  %d invalid entries are ignored !" % (count - applied))
+            print ("  %d invalid entries are ignored !" % (count - applied) )
 
     if OutputFile == '':
         filename = os.path.basename(FspBinary)
